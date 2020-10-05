@@ -14,7 +14,10 @@ public class QuickUnionWeightedUF {
     private int root(int i) {
         // chase parent pointers until reach root
         while (i != id[i])
-            i = id[i];
+            // below line helps flatten tree by making every other node in path point to
+            // grandparent
+            id[i] = id[id[i]];
+        i = id[i];
         return i;
     }
 
